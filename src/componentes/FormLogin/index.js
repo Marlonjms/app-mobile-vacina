@@ -1,22 +1,62 @@
-
-import { TextInput, View, Text, TouchableOpacity} from 'react-native';
+import React, { useState } from "react";
+import { TextInput, View, Text, TouchableOpacity, Alert} from 'react-native';
 import styles from './style';
 
 export default function Form() {
+
+  const [cpf, setCpf] = useState(null)
+  const [senha, setSenha] = useState(null)
+  const [textButton, setTextButton] = useState("Login")
+
+  const createAlert = () => Alert.alert(
+    "Oops!",
+    "Verifique se o campo Cpf e senha estão preenchidos."
+  
+);
+
+const homeImproviso = () => Alert.alert(
+  "Deu certo"
+);
+
+function limpaCampos() {
+  if (!cpf || !senha) {
+    createAlert();
+} else {
+    // aqui é para chamar a tela home...
+    homeImproviso();
+
+    }
+}
+
+
+
+
     return (
       <View style={styles.forms}>
-       <TextInput style={styles.input}
+       <TextInput
+          style={styles.input}
           placeholder="cpf"
           keyboardType={'numeric'}
+          onChangeText={setCpf}
+          value={cpf}
         />
-        <TextInput style={styles.input}
+        <TextInput
+          style={styles.input}
           placeholder="senha"
-          keyboardType={'email'}
-        />
-          <TouchableOpacity style={styles.botaoLogin} >
-            <Text style={styles.textBotaoLogin}>login</Text>
-          </TouchableOpacity >
+          keyboardType={'default'}
+          onChangeText={setSenha}
+         value={senha}
 
+        />
+          <TouchableOpacity
+           style={styles.botaoLogin} 
+           
+           onPress={() => limpaCampos()}>
+        
+
+            <Text style={styles.textBotaoLogin}>{textButton}</Text>
+          </TouchableOpacity >
+        {/* falra só teriminar aqui */}
          <Text style={styles.textoCadastrar}>não possuí conta? Registre-se</Text> 
       </View>
 

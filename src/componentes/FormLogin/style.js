@@ -24,6 +24,8 @@ input:{
     borderRadius:17,
     
 },
+
+// vai estilizar o botão de login
 botaoLogin:{
     borderRadius:18,
     alignItems:"center",
@@ -34,10 +36,13 @@ botaoLogin:{
     paddingBottom:10,
     marginLeft:12,
     marginTop:40,
+
+    // vai estilizar o texto do botão
 },
 textBotaoLogin:{
     color:"#FFFFFF",
-
+    
+   // vai estilizar o texto de cadastrar o botão
 },
 textoCadastrar:{
     marginTop:40,

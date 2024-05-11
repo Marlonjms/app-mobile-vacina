@@ -14,13 +14,25 @@ export function Title(){
     );
 }
 
+export function Title2(){
+    return(
+        
+         /* Essa View vai ser usada para motrar o titulo na tela de cadrasto */
+    
+     <View style={styles.boxTitle}>
+         <Text style={styles.textoTitle}>CADASTRE-SE</Text>
+     </View>
+
+    );
+}
+
 export function ImageLogo(){
     return(
 
         /*Essa view vai servir para mostrar a imagen/logo do app(calendario com a vacina)*/
 
         <View style={styles.imagenLogo}> 
-           <Image source={require("../../assets/Logo.png")}/>
+           <Image source={require("../../../assets/Logo.png")}/>
         </View>
 
 

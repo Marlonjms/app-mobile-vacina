@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, View} from 'react-native';
-import { Title } from './src/componentes/Titulos_e_Logos/index.js';
-import { ImageLogo } from './src/componentes/Titulos_e_Logos/index.js';
-import   Form  from './src/componentes/FormLogin/index.js';
+import Login from './src/pages/PaginaLogin/index,';
+
 
 
 
@@ -11,10 +10,9 @@ export default function App() {
   return (
     <View style={styles.containe}>
       
-      
-      <Title/>
-      <ImageLogo/>
-      <Form/>
+      {/* eu crie os componetes e importei para pasta  PaginaLogin, dai importei a Pasta PaginaLogin para exibir aqui no App.js.*/}
+      <Login/>
+     
       
     
 

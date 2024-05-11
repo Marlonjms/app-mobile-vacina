@@ -1,18 +1,12 @@
 import { StyleSheet } from "react-native";
+
 const styles = StyleSheet.create({
-
-
-// vai estilizar a caixa, onde estão os inputs
-    forms:{
-        paddingTop:23,
-        alignItems: 'center',
-          flex: 1,
-    },
-
-
-// vai estilizar os inputs
-
-input:{
+  forms: {
+    paddingTop: 23,
+    alignItems: "center",
+    flex: 1,
+  },
+  input: {
     width: "75%",
     backgroundColor: "#FFFFFF",
     height: 40,
@@ -20,37 +14,51 @@ input:{
     paddingLeft: 20,
     borderColor: "#000000",
     borderWidth: 1,
-    justifyContent: 'center',
-    borderRadius:17,
+    justifyContent: "center",
+    borderRadius: 17,
+  },
+  botaoLogin: {
     
-},
-
-// vai estilizar o botão de login
-botaoLogin:{
-    borderRadius:18,
+    width: "50%",
     alignItems:"center",
-    justifyContent:"center",
-    width:"60%",
-    backgroundColor:"#2E9371",
-    paddingTop:10,
-    paddingBottom:10,
-    marginLeft:12,
-    marginTop:40,
+    backgroundColor: "#2E9371",
+    height: 44,
+    margin: 45,
+    borderColor: "#000000",
+    borderWidth: 1,
+    justifyContent: "center",
+    borderRadius: 17,
+   
 
-    // vai estilizar o texto do botão
+  },
+  textBotaoLogin: {
+     color:"#FFFFFF", // Alterado para azul conforme especificado
+   },
+
+   buttonCadastro:{
+    width: "50%",
+    alignItems:"center",
+    backgroundColor: "",
+    height: 44,
+    marginBottom: 20,
+    borderColor: "#000000",
+    justifyContent: "center",
+  
+   
+
 },
-textBotaoLogin:{
-    color:"#FFFFFF",
+
+textCadastro: {
+    fontSize: 12, 
     
-   // vai estilizar o texto de cadastrar o botão
-},
-textoCadastrar:{
-    marginTop:40,
-    fonteSize:8,
-}
+    },
 
 
 
+  textCadastroDestacado: {
+    color: "#2E9371"
+  },
+  
 });
 
-export default styles
+export default styles;

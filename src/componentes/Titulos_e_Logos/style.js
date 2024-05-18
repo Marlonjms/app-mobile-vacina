@@ -91,6 +91,7 @@ TextoNomeHOme:{
     backgroundColor:"#2E9371",
     height:47,
     marginTop:56,
+    flex:1
     
 
   

@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { TextInput, View, Text, TouchableOpacity, Alert } from 'react-native';
 import styles from './style';
+import { useNavigation } from "@react-navigation/native";
 
-export default function FormPaginaLogin({ navigation }) {
+
+
+export default function FormPaginaLogin() {
+
+  const navigation = useNavigation();
   const [cpf, setCpf] = useState(null);
   const [senha, setSenha] = useState(null);
   const [textButton, setTextButton] = useState("Login");
@@ -20,8 +25,7 @@ export default function FormPaginaLogin({ navigation }) {
     if (!cpf || !senha) {
       createAlert();
     } else {
-      // aqui é para chamar a tela home...
-      homeImproviso();
+      navigation.navigate("Home");
     }
   }
 
@@ -50,7 +54,7 @@ export default function FormPaginaLogin({ navigation }) {
 
       <TouchableOpacity
         style={styles.buttonCadastro}
-        onPress={() => navigation.navigate("Cadastro")} // Navegar para a tela de cadastro
+        onPress={() => navigation.navigate("Cadastro")}
       >
         <Text style={styles.textCadastro}>Não possui conta? <Text style={styles.textCadastroDestacado}>Registre-se</Text></Text>
       </TouchableOpacity>

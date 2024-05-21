@@ -6,6 +6,7 @@ import { Title, ImageLogo } from '../componentes/Titulos_e_Logos';
 import Cadastro from '../pages/PaginaCadrastoUser';
 import Home from '../pages/paginaHome';
 import FormPaginaLogin from '../componentes/FormLogin';
+import cadastar_consultar from '../pages/PaginaConsultar_cadastrar_vacina';
 
 
 
@@ -39,6 +40,11 @@ export default function TabRoutes() {
         <Stack.Screen
           name="Home"
           component={Home}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="cadastar_consultar"
+          component={cadastar_consultar}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

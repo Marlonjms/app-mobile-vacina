@@ -81,7 +81,7 @@ export function MargeminferioroHome(){
         /*Essa view vai servir para mostrar a imagen/logo do app(calendario com a vacina azul)*/
 
         <View style={styles.Margeminferior}> 
-    
+        
         </View>
 
 

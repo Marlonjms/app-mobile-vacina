@@ -17,10 +17,6 @@ export default function FormPaginaLogin() {
     "Verifique se o campo Cpf e senha estão preenchidos."
   );
 
-  const homeImproviso = () => Alert.alert(
-    "Deu certo"
-  );
-
   function limpaCampos() {
     if (!cpf || !senha) {
       createAlert();
@@ -54,7 +50,7 @@ export default function FormPaginaLogin() {
 
       <TouchableOpacity
         style={styles.buttonCadastro}
-        onPress={() => navigation.navigate("Cadastro")}
+        onPress={() => navigation.navigate("cadastar_consultar")}
       >
         <Text style={styles.textCadastro}>Não possui conta? <Text style={styles.textCadastroDestacado}>Registre-se</Text></Text>
       </TouchableOpacity>

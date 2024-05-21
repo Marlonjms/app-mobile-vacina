@@ -148,6 +148,7 @@ const CadastroConsulta = () => {
             showsVerticalScrollIndicator={false}
             style={styles.lista}
 
+
             renderItem={({ item }) => (
               <View style={styles.containerTarefa}>
                 
@@ -171,7 +172,7 @@ const CadastroConsulta = () => {
             placeholderTextColor="#999"
             autoCorrect={true}
             value={novaTarefa}
-            placeholder="Adicione nome da vacina"
+            placeholder="Nome da vacina"
             maxLength={25}
             onChangeText={text => setNovaTarefa(text)}
           />
@@ -191,7 +192,7 @@ const CadastroConsulta = () => {
             placeholderTextColor="#999"
             autoCorrect={true}
             value={novoLocal}
-            placeholder="Adicione local da vacina"
+            placeholder="local da vacina"
             maxLength={50}
             onChangeText={text => setNovoLocal(text)}
           />
@@ -200,7 +201,7 @@ const CadastroConsulta = () => {
             placeholderTextColor="#999"
             autoCorrect={true}
             value={novoLote}
-            placeholder="Adicione lote da vacina"
+            placeholder="lote da vacina"
             maxLength={50}
             onChangeText={text => setNovoLote(text)}
           />

@@ -50,7 +50,7 @@ export default function FormPaginaLogin() {
 
       <TouchableOpacity
         style={styles.buttonCadastro}
-        onPress={() => navigation.navigate("cadastar_consultar")}
+        onPress={() => navigation.navigate("Cadastro")}
       >
         <Text style={styles.textCadastro}>Não possui conta? <Text style={styles.textCadastroDestacado}>Registre-se</Text></Text>
       </TouchableOpacity>

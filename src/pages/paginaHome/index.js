@@ -1,18 +1,57 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { ImageLogoPacienteHome, MargemSuperioHome, TitleHOme, MargeminferioroHome } from '../../componentes/Titulos_e_Logos/index';
 import { SafeAreaView } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { SimpleLineIcons, Octicons, Ionicons } from '@expo/vector-icons';
+import CadastroConsulta from '../PaginaConsultar_cadastrar_vacina';
+import { ImageLogoPacienteHome, MargemSuperioHome, TitleHOme} from '../../componentes/Titulos_e_Logos/index';
 
-const Home = () => {
+const Tab = createBottomTabNavigator();
+
+function HomeContent() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.co}>
-        <MargemSuperioHome/>
+        <MargemSuperioHome />
         <TitleHOme />
         <ImageLogoPacienteHome />
-        < MargeminferioroHome/>
       </View>
     </SafeAreaView>
+  );
+}
+
+export default function Home() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: { backgroundColor: '#2E9371' },
+        tabBarActiveTintColor: 'white',  // Cor do ícone e texto ativo
+        tabBarInactiveTintColor: 'black', // Cor do ícone e texto inativo
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeContent}
+        options={{
+          tabBarIcon: ({ color }) => <SimpleLineIcons name="home" size={24} color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="Cadastrar/ consultar "
+        component={CadastroConsulta}
+        options={{
+          tabBarIcon: ({ color }) => <Ionicons name="add-circle-outline" size={24} color={color} />,
+        }}
+      />
+    {/**  <Tab.Screen
+        name="Consultar vacina"
+        component={CadastroConsulta}
+        options={{
+          tabBarIcon: ({ color }) => <Octicons name="list-ordered" size={24} color={color} />,
+        }}
+      /> */}
+    </Tab.Navigator>
   );
 }
 
@@ -20,13 +59,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    paddingTop: 80, // Ajuste o valor conforme necessário
-
+    paddingTop: 80, 
   },
-  co:{
-    backgroundColor:"red",
-    flex:1,
+  co: {
+    backgroundColor: "#FFFFFF",
+    flex: 1,
   }
 });
-
-export default Home;

@@ -88,3 +88,15 @@ export function MargeminferioroHome(){
     );
 
 } 
+
+export function Title2(){
+    return(
+        
+         /* Essa View vai ser usada para motrar o titulo na tela de cadastro*/
+    
+     <View style={styles.boxTitle}>
+         <Text style={styles.textoTitle}>CADASTRE-SE</Text>
+     </View>
+
+    );
+}

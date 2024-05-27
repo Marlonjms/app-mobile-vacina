@@ -31,7 +31,7 @@ export default function Home() {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="início"
         component={HomeContent}
         options={{
           tabBarIcon: ({ color }) => <SimpleLineIcons name="home" size={24} color={color} />,

@@ -1,58 +1,40 @@
 import React, { useState } from "react";
 import { TextInput, View, Text, TouchableOpacity, Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './style';
 import { useNavigation } from "@react-navigation/native";
 
 export default function FormPaginaLogin() {
-
   const navigation = useNavigation();
   const [cpf, setCpf] = useState(null);
   const [senha, setSenha] = useState(null);
-  const [textButton, setTextButton] = useState("Login");
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!cpf || !senha) {
-      Alert.alert(
-        "Oops!",
-        "Por favor, preencha o CPF e a senha."
-      );
+      Alert.alert("Oops!", "Por favor, preencha o CPF e a senha.");
       return;
     }
   
-    fetch('http://192.168.0.110:3000/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ cpf, senha }),
-    })
-    .then(response => {
+    try {
+      const response = await fetch('http://192.168.0.110:3000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cpf, senha }),
+      });
       if (response.ok) {
+        await AsyncStorage.setItem('cpf', cpf);
         navigation.navigate("Home");
-        Alert.alert(
-          "logado com sucesso"
-        );
+        Alert.alert("Logado com sucesso");
       } else if (response.status === 401) {
-        Alert.alert(
-          "Oops!",
-          "CPF ou senha incorretos. Por favor, tente novamente mais tarde."
-        );
+        Alert.alert("Oops!", "CPF ou senha incorretos. Por favor, tente novamente mais tarde.");
       } else {
-        Alert.alert(
-          "Oops!",
-          "Algo deu errado. Por favor, tente novamente mais tarde."
-        );
+        Alert.alert("Oops!", "Algo deu errado. Por favor, tente novamente mais tarde.");
       }
-    })
-    .catch(error => {
+    } catch (error) {
       console.error('Erro ao fazer login:', error);
-      Alert.alert(
-        "Oops!",
-        "Algo deu errado. Por favor, tente novamente mais tarde."
-      );
-    });
-  }
-  
+      Alert.alert("Oops!", "Algo deu errado. Por favor, tente novamente mais tarde.");
+    }
+  };
 
   return (
     <View style={styles.forms}>
@@ -75,7 +57,7 @@ export default function FormPaginaLogin() {
       <TouchableOpacity
         style={styles.botaoLogin} 
         onPress={handleLogin}>
-        <Text style={styles.textBotaoLogin}>{textButton}</Text>
+        <Text style={styles.textBotaoLogin}>Login</Text>
       </TouchableOpacity >
 
       <TouchableOpacity
@@ -87,13 +69,6 @@ export default function FormPaginaLogin() {
     </View>
   );
 }
-
-
-
-
-
-
-
 
 
 /*

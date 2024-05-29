@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SimpleLineIcons, Octicons, Ionicons } from '@expo/vector-icons';
 import CadastroConsulta from '../PaginaConsultar_cadastrar_vacina';
 import { ImageLogoPacienteHome, MargemSuperioHome, TitleHOme} from '../../componentes/Titulos_e_Logos/index';
+import DadosUsuario from '../Dados_do_usuario';
 
 const Tab = createBottomTabNavigator();
 
@@ -44,13 +45,13 @@ export default function Home() {
           tabBarIcon: ({ color }) => <Ionicons name="add-circle-outline" size={24} color={color} />,
         }}
       />
-    {/**  <Tab.Screen
-        name="Consultar vacina"
-        component={CadastroConsulta}
+      <Tab.Screen
+        name="Usuario"
+        component={DadosUsuario}
         options={{
-          tabBarIcon: ({ color }) => <Octicons name="list-ordered" size={24} color={color} />,
+          tabBarIcon: ({ color }) => <Octicons name="person" size={24} color={color} />,
         }}
-      /> */}
+      /> 
     </Tab.Navigator>
   );
 }

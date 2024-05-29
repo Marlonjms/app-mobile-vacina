@@ -7,6 +7,7 @@ import Cadastro from '../pages/PaginaCadrastoUser';
 import Home from '../pages/paginaHome';
 import FormPaginaLogin from '../componentes/FormLogin';
 import cadastar_consultar from '../pages/PaginaConsultar_cadastrar_vacina';
+import dadosusuario from "../pages/Dados_do_usuario/index"
 
 
 
@@ -45,6 +46,11 @@ export default function TabRoutes() {
         <Stack.Screen
           name="cadastar_consultar"
           component={cadastar_consultar}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="dados_do_usuario"
+          component={dadosusuario}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

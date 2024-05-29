@@ -34,7 +34,7 @@ export function MargemSuperioHome(){
         /*Essa view vai servir para mostrar a imagen/logo do app(calendario com a vacina azul)*/
 
         <View style={styles.MargemSuperior}> 
-      
+      <Text> vou colocar a imagen de perfil aqui ainda</Text>
         </View>
 
 

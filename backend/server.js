@@ -1,14 +1,17 @@
 
 
+//
+
 const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const bcrypt = require('bcryptjs');
 
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.json({ limit: '50mb' })); // Aumenta o limite de tamanho do corpo
+app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cors());
 
 const connection = mysql.createConnection({
@@ -29,13 +32,19 @@ connection.connect(error => {
 // Rota de login
 app.post('/api/login', (req, res) => {
   const { cpf, senha } = req.body;
-  const sqlSelect = 'SELECT * FROM Usuario WHERE cpf = ? AND senha = ?';
-  connection.query(sqlSelect, [cpf, senha], (error, results) => {
+  const sqlSelect = 'SELECT * FROM Usuario WHERE cpf = ?';
+  connection.query(sqlSelect, [cpf], async (error, results) => {
     if (error) {
       console.error('Erro ao fazer login: ', error);
       res.status(500).send('Erro ao fazer login');
     } else if (results.length > 0) {
-      res.status(200).send('Login bem-sucedido');
+      const user = results[0];
+      const isPasswordValid = await bcrypt.compare(senha, user.senha);
+      if (isPasswordValid) {
+        res.status(200).send('Login bem-sucedido');
+      } else {
+        res.status(401).send('CPF ou senha incorretos');
+      }
     } else {
       res.status(401).send('CPF ou senha incorretos');
     }
@@ -43,18 +52,29 @@ app.post('/api/login', (req, res) => {
 });
 
 // Rota de cadastrar usuário
-app.post('/api/cadastrar-usuario', (req, res) => {
+app.post('/api/cadastrar-usuario', async (req, res) => {
   const { cpf, nome, email, senha, data_nascimento, telefone, sexo, cidade } = req.body;
-  const sql = 'INSERT INTO Usuario (cpf, nome, email, senha, data_nascimento, telefone, sexo, cidade) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-  connection.query(sql, [cpf, nome, email, senha, data_nascimento, telefone, sexo, cidade], (err, result) => {
-    if (err) {
-      console.error('Erro ao cadastrar usuário:', err);
-      res.status(500).send('Erro ao cadastrar usuário');
-    } else {
-      res.status(200).send('Usuário cadastrado com sucesso!');
-    }
-  });
+  
+  try {
+    // Criptografar a senha
+    const hashedSenha = await bcrypt.hash(senha, 10);
+
+    const sql = 'INSERT INTO Usuario (cpf, nome, email, senha, data_nascimento, telefone, sexo, cidade) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    connection.query(sql, [cpf, nome, email, hashedSenha, data_nascimento, telefone, sexo, cidade], (err, result) => {
+      if (err) {
+        console.error('Erro ao cadastrar usuário:', err);
+        res.status(500).send('Erro ao cadastrar usuário');
+      } else {
+        res.status(200).send('Usuário cadastrado com sucesso!');
+      }
+    });
+  } catch (err) {
+    console.error('Erro ao criptografar a senha:', err);
+    res.status(500).send('Erro ao cadastrar usuário');
+  }
 });
+
+
 
 // Rota de inserção de vacina
 app.post('/api/vacina', (req, res) => {

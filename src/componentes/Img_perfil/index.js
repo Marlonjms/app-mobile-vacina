@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     width: 45,
     height: 45,
     borderRadius: 22.5,
-    marginLeft:11,
+    marginLeft:12,
   },
   placeholderContainer: {
     width: 45,
@@ -173,21 +173,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 22,
     backgroundColor: '#ffffff',
+    
   },
   modalImage: {
     width: 200,
     height: 200,
     borderRadius: 100,
     marginBottom: 20,
+
   },
   iconContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '60%',
+    
   },
   iconButton: {
     alignItems: 'center',
     marginHorizontal: 20,
+    
   },
   iconText: {
     marginTop: 5,
@@ -199,6 +203,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#2E9371',
     padding: 10,
     borderRadius: 5,
+    
   },
   closeButtonText: {
     color: 'white',

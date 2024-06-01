@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
@@ -6,7 +8,7 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' })); // Aumenta o limite de tamanho do corpo
 app.use(cors());
 
 const connection = mysql.createConnection({
@@ -110,6 +112,55 @@ app.delete('/api/vacina/:id', (req, res) => {
     }
   });
 });
+
+// eviar a img
+app.post('/api/uploadImagemPerfil', (req, res) => {
+  const { cpf, imagem } = req.body;
+  const query = `REPLACE INTO ImagemPerfil (cpf, imagem) VALUES (?, ?)`;
+
+  connection.query(query, [cpf, Buffer.from(imagem, 'base64')], (err, result) => {
+    if (err) {
+      console.error('Erro ao inserir imagem:', err);
+      return res.status(500).json({ message: 'Erro ao inserir imagem' });
+    }
+    res.status(200).json({ message: 'Imagem enviada com sucesso' });
+  });
+});
+
+//mostrar a img
+app.get('/api/imagemPerfil', (req, res) => {
+  const { cpf } = req.query;
+  const query = `SELECT imagem FROM ImagemPerfil WHERE cpf = ?`;
+
+  connection.query(query, [cpf], (err, results) => {
+    if (err) {
+      console.error('Erro ao buscar imagem:', err);
+      return res.status(500).json({ message: 'Erro ao buscar imagem' });
+    }
+    if (results.length > 0) {
+      const image = results[0].imagem.toString('base64');
+      res.status(200).json({ imagem: image });
+    } else {
+      res.status(404).json({ message: 'Imagem não encontrada' });
+    }
+  });
+});
+
+//excluir a img
+
+app.delete('/api/deleteImagemPerfil', (req, res) => {
+  const { cpf } = req.query;
+  const query = `DELETE FROM ImagemPerfil WHERE cpf = ?`;
+
+  connection.query(query, [cpf], (err, result) => {
+    if (err) {
+      console.error('Erro ao deletar imagem:', err);
+      return res.status(500).json({ message: 'Erro ao deletar imagem' });
+    }
+    res.status(200).json({ message: 'Imagem deletada com sucesso' });
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);

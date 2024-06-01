@@ -4,9 +4,9 @@ import { SafeAreaView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SimpleLineIcons, Octicons, Ionicons } from '@expo/vector-icons';
 import CadastroConsulta from '../PaginaConsultar_cadastrar_vacina';
-import { ImageLogoPacienteHome, MargemSuperioHome, TitleHOme} from '../../componentes/Titulos_e_Logos/index';
+import { ImageLogoPacienteHome, TitleHOme} from '../../componentes/Titulos_e_Logos/index';
 import DadosUsuario from '../Dados_do_usuario';
-
+import MargemSuperioHome from '../../componentes/Img_perfil/index'
 const Tab = createBottomTabNavigator();
 
 function HomeContent() {

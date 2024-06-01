@@ -63,6 +63,7 @@ imagenHome:{
   // vai servir para estilizar caixa de texto que compoe os dois <text/>
 CaixaTextoNomeHOme:{
     color: "#2E9371",
+    
 
  },
  // vai servir para estilizar a caiza que contem todos os texto na parte superior da tela home

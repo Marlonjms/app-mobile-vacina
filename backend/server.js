@@ -181,6 +181,37 @@ app.delete('/api/deleteImagemPerfil', (req, res) => {
   });
 });
 
+// Rota para buscar usuário por CPF
+app.get('/api/usuario/:cpf', (req, res) => {
+  const cpf = req.params.cpf;
+  const sql = 'SELECT * FROM Usuario WHERE cpf = ?';
+  connection.query(sql, [cpf], (error, results) => {
+    if (error) {
+      console.error('Erro ao buscar usuário por CPF:', error);
+      res.status(500).send('Erro ao buscar usuário por CPF');
+    } else if (results.length > 0) {
+      res.status(200).json(results[0]);
+    } else {
+      res.status(404).send('Usuário não encontrado');
+    }
+  });
+});
+
+// Rota para editar usuário por CPF
+app.put('/api/usuario/:cpf', (req, res) => {
+  const cpf = req.params.cpf;
+  const { nome, email, data_nascimento, telefone, sexo, cidade } = req.body;
+  const sql = 'UPDATE Usuario SET nome = ?, email = ?, data_nascimento = ?, telefone = ?, sexo = ?, cidade = ? WHERE cpf = ?';
+  connection.query(sql, [nome, email, data_nascimento, telefone, sexo, cidade, cpf], (error, result) => {
+    if (error) {
+      console.error('Erro ao editar usuário por CPF:', error);
+      res.status(500).send('Erro ao editar usuário por CPF');
+    } else {
+      res.status(200).send('Usuário editado com sucesso');
+    }
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);

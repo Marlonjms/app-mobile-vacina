@@ -53,7 +53,7 @@ export function TitleHOme(){
     
      <View style={styles.boxTexto}>
         <Text style={styles.CaixaTextoNomeHOme} >
-             <Text style={styles.TextoNomeHOme}>olá beltrano!{'\n'}</Text>
+             <Text style={styles.TextoNomeHOme}>olá!{'\n'}</Text>
              <Text style={styles.textoHome}>No nosso app, você pode{'\n'}consultar todas as informações{'\n'}relacionadas as suas vacinas{'\n'}cadastrada.  </Text>
         </Text>
      </View>
@@ -66,7 +66,7 @@ export function ImageLogoPacienteHome(){
     return(
         /* essa imagem é um de uma criança tomando a vacina  */
         <View style={styles.caixaimagenHome}>
-            <Image style={styles.imagenHome} source={require("../../../assets/imgpaciente.png")} resizeMode="contain"/>
+            <Image style={styles.imagenHome} source={require("../../../assets/imgpaciente2.jpg")} resizeMode="contain"/>
         </View>
 
 

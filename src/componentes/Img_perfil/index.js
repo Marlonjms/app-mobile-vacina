@@ -20,7 +20,7 @@ export default function MargemSuperioHome() {
 
   const fetchImage = async (cpf) => {
     try {
-      const response = await fetch(`http://192.168.0.110:3000/api/imagemPerfil?cpf=${cpf}`);
+      const response = await fetch(`http://192.168.0.107:3000/api/imagemPerfil?cpf=${cpf}`);
       if (response.ok) {
         const data = await response.json();
         setImage(`data:image/jpeg;base64,${data.imagem}`);
@@ -60,7 +60,7 @@ export default function MargemSuperioHome() {
 
   const uploadImage = async (base64Image) => {
     try {
-      const response = await fetch('http://192.168.0.110:3000/api/uploadImagemPerfil', {
+      const response = await fetch('http://192.168.0.107:3000/api/uploadImagemPerfil', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ export default function MargemSuperioHome() {
 
   const deleteImage = async () => {
     try {
-      const response = await fetch(`http://192.168.0.110:3000/api/deleteImagemPerfil?cpf=${cpf}`, {
+      const response = await fetch(`http://192.168.0.107:3000/api/deleteImagemPerfil?cpf=${cpf}`, {
         method: 'DELETE',
       });
 
@@ -145,68 +145,76 @@ export default function MargemSuperioHome() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#2E9371",
-    marginTop:-35,
-    marginBottom:4,
-    height:49,
-    justifyContent: 'center',
+  
+    container: {
+      backgroundColor: "#2E9371",
+      marginTop: -35,
+      marginBottom: 4,
+      height: 49,
+      justifyContent: 'center', // Centraliza verticalmente o conteúdo do container
     
-  },
+      paddingHorizontal: 20, // Adiciona um espaçamento horizontal interno
+      shadowColor: "#000", // Cor da sombra
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 100, // Opacidade da sombra
+      shadowRadius: 10, // Raio da sombra
+      elevation: 89, // Elevação (para dispositivos Android)
+    },
   profileImage: {
-    width: 45,
-    height: 45,
-    borderRadius: 22.5,
-    marginLeft:12,
+    width: 45, // Largura da imagem de perfil
+    height: 45, // Altura da imagem de perfil
+    borderRadius: 22.5, // Deixa a imagem circular
+    marginLeft: 'auto', // Margem automática à esquerda
+    marginRight: 'auto', // Margem automática à direita
   },
   placeholderContainer: {
-    width: 45,
-    height: 45,
-    borderRadius: 22.5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
+    width: 45, // Largura do container do placeholder
+    height: 45, // Altura do container do placeholder
+    borderRadius: 22.5, // Deixa o placeholder circular
+    justifyContent: 'center', // Centraliza verticalmente o conteúdo do placeholder
+    alignItems: 'center', // Centraliza horizontalmente o conteúdo do placeholder
+    backgroundColor: 'white', // Cor de fundo do placeholder
+    marginLeft: 'auto', // Margem automática à esquerda
+    marginRight: 'auto', // Margem automática à direita
   },
   modalView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-    backgroundColor: '#ffffff',
-    
+    flex: 1, // O modal ocupa todo o espaço disponível
+    justifyContent: 'center', // Centraliza verticalmente o conteúdo do modal
+    alignItems: 'center', // Centraliza horizontalmente o conteúdo do modal
+    marginTop: 22, // Margem superior
+    backgroundColor: '#ffffff', // Cor de fundo do modal
   },
   modalImage: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-    marginBottom: 20,
-
+    width: 200, // Largura da imagem do modal
+    height: 200, // Altura da imagem do modal
+    borderRadius: 100, // Deixa a imagem do modal circular
+    marginBottom: 20, // Margem inferior
   },
   iconContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '60%',
-    
+    flexDirection: 'row', // Alinha os ícones em uma linha
+    justifyContent: 'space-between', // Distribui os ícones uniformemente
+    width: '60%', // Largura do container de ícones
   },
   iconButton: {
-    alignItems: 'center',
-    marginHorizontal: 20,
-    
+    alignItems: 'center', // Centraliza horizontalmente o conteúdo do botão de ícone
+    marginHorizontal: 20, // Margem horizontal
   },
   iconText: {
-    marginTop: 5,
-    fontSize: 12,
-    color: '#000',
+    marginTop: 5, // Margem superior
+    fontSize: 12, // Tamanho da fonte
+    color: '#000', // Cor do texto
   },
   closeButton: {
-    marginTop: 20,
-    backgroundColor: '#2E9371',
-    padding: 10,
-    borderRadius: 5,
-    
+    marginTop: 20, // Margem superior
+    backgroundColor: '#2E9371', // Cor de fundo do botão de fechar
+    padding: 10, // Padding do botão
+    borderRadius: 5, // Borda arredondada
   },
   closeButtonText: {
-    color: 'white',
-    fontSize: 16,
+    color: 'white', // Cor do texto
+    fontSize: 16, // Tamanho da fonte
   },
 });

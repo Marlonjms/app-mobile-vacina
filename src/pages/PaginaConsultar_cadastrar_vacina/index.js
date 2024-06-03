@@ -20,7 +20,7 @@ const App = () => {
   const fetchVacinas = async () => {
     try {
       const cpf = await AsyncStorage.getItem('cpf');
-      const response = await axios.get(`http://192.168.0.110:3000/api/vacina/${cpf}`);
+      const response = await axios.get(`http://192.168.0.107:3000/api/vacina/${cpf}`);
       setVacinas(response.data);
     } catch (error) {
       console.error('Erro ao buscar vacinas:', error);
@@ -41,11 +41,11 @@ const App = () => {
 
       if (selectedVacinaId) {
         // Atualizar vacina existente
-        await axios.put(`http://192.168.0.110:3000/api/vacina/${selectedVacinaId}`, newVacina);
+        await axios.put(`http://192.168.0.107:3000/api/vacina/${selectedVacinaId}`, newVacina);
         Alert.alert('Sucesso!', 'Vacina atualizada com sucesso!');
       } else {
         // Adicionar nova vacina
-        await axios.post('http://192.168.0.110:3000/api/vacina', newVacina);
+        await axios.post('http://192.168.0.107:3000/api/vacina', newVacina);
         Alert.alert('Sucesso!', 'Vacina cadastrada com sucesso!');
       }
 
@@ -70,7 +70,7 @@ const App = () => {
           {
             text: 'Excluir',
             onPress: async () => {
-              await axios.delete(`http://192.168.0.110:3000/api/vacina/${id}`);
+              await axios.delete(`http://192.168.0.107:3000/api/vacina/${id}`);
               fetchVacinas();
             }
           }

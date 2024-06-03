@@ -16,7 +16,7 @@ export default function FormPaginaLogin() {
     }
   
     try {
-      const response = await fetch('http://192.168.0.110:3000/api/login', {
+      const response = await fetch('http://192.168.0.107:3000/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ cpf, senha }),
@@ -69,104 +69,5 @@ export default function FormPaginaLogin() {
     </View>
   );
 }
-
-
-/*
-
-import React, { useState } from "react";
-import { TextInput, View, Text, TouchableOpacity, Alert } from 'react-native';
-import styles from './style';
-import { useNavigation } from "@react-navigation/native";
-
-
-
-export default function FormPaginaLogin() {
-
-  const navigation = useNavigation();
-  const [cpf, setCpf] = useState(null);
-  const [senha, setSenha] = useState(null);
-  const [textButton, setTextButton] = useState("Login");
-
-  const createAlert = () => Alert.alert(
-    "Oops!",
-    "Verifique se o campo Cpf e senha estão preenchidos."
-  );
-
-  function limpaCampos() {
-    if (!cpf || !senha) {
-      createAlert();
-    } else {
-      navigation.navigate("Home");
-    }
-  }
-
-  return (
-    <View style={styles.forms}>
-      <TextInput
-        style={styles.input}
-        placeholder="cpf"
-        keyboardType={'numeric'}
-        onChangeText={setCpf}
-        value={cpf}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="senha"
-        keyboardType={'default'}
-        onChangeText={setSenha}
-        value={senha}
-      />
-     
-      <TouchableOpacity
-        style={styles.botaoLogin} 
-        onPress={() => limpaCampos()}>
-        <Text style={styles.textBotaoLogin}>{textButton}</Text>
-      </TouchableOpacity >
-
-      <TouchableOpacity
-        style={styles.buttonCadastro}
-        onPress={() => navigation.navigate("Cadastro")}
-      >
-        <Text style={styles.textCadastro}>Não possui conta? <Text style={styles.textCadastroDestacado}>Registre-se</Text></Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-
-
-
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

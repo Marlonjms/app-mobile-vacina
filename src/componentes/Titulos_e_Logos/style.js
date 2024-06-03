@@ -49,14 +49,15 @@ MargemSuperior:{
 
 // vai servir para estilizar a caixa (View ) da imagem da tela home
 caixaimagenHome:{
-
+alignItems:'center'
 
   },
 // vai servir para a imagem home
-imagenHome:{
-  width:"99%",
-  marginTop:-50,
-
+imagenHome: {
+  width: 400, // ajuste a largura conforme necessário
+  height: 400, // ajuste a altura conforme necessário
+  resizeMode: 'contain', // para garantir que a imagem mantenha suas proporções
+  margin: 10 // margem opcional para dar espaçamento ao redor da imagem
 },
 
 
@@ -70,15 +71,16 @@ CaixaTextoNomeHOme:{
  boxTexto: {
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: -10, 
+    paddingVertical:10, 
+    paddingHorizontal: 10, // Adiciona espaçamento horizontal
     marginBottom:19,
     marginTop:0,
-    backgroundColor:"#ffffff"
+    backgroundColor:"#66C7D0"
 
 },
 //vai servir para estilizar a caixa de texto que compoe o nome: Olá beltrano(nome do usuario)
 TextoNomeHOme:{
-    color: "#2E9371",
+    color: "#FFFFFF",
     fontWeight: "bold",
     fontSize:32,
 
@@ -86,6 +88,7 @@ TextoNomeHOme:{
   // serve estilizar o restante do texto,
   textoHome:{
       fontSize:24,
+      color: "#FFFFFF",
   },
   // vai servir para estilizar a margem inferior
   Margeminferior:{

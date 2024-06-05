@@ -56,7 +56,7 @@ const PerfilUsuario = () => {
   const buscarUsuario = async (cpf) => {
     setLoading(true);
     try {
-      const response = await fetch(`http://192.168.0.107:3000/api/usuario/${cpf}`);
+      const response = await fetch(`http://192.168.0.129:3000/api/usuario/${cpf}`);
       if (response.ok) {
         const data = await response.json();
         setUsuario(data);
@@ -91,7 +91,7 @@ const PerfilUsuario = () => {
 
     setLoading(true);
     try {
-      const response = await fetch(`http://192.168.0.107:3000/api/usuario/${cpf}`, {
+      const response = await fetch(`http://192.168.0.129:3000/api/usuario/${cpf}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(usuario),

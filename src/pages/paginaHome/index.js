@@ -13,7 +13,7 @@ function HomeContent() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.co}>
-        <MargemSuperioHome />
+        <MargemSuperioHome/>
         <TitleHOme />
         <ImageLogoPacienteHome />
       </View>

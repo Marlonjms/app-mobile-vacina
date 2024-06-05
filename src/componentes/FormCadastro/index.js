@@ -42,7 +42,7 @@ export default function FormPaginacadastro() {
 
 
 
-    fetch('http://192.168.0.107:3000/api/cadastrar-usuario', {
+    fetch('http://192.168.0.129:3000/api/cadastrar-usuario', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

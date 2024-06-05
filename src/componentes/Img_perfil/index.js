@@ -20,7 +20,7 @@ export default function MargemSuperioHome() {
 
   const fetchImage = async (cpf) => {
     try {
-      const response = await fetch(`http://192.168.0.107:3000/api/imagemPerfil?cpf=${cpf}`);
+      const response = await fetch(`http://192.168.0.109:3000/api/imagemPerfil?cpf=${cpf}`);
       if (response.ok) {
         const data = await response.json();
         setImage(`data:image/jpeg;base64,${data.imagem}`);
@@ -60,7 +60,7 @@ export default function MargemSuperioHome() {
 
   const uploadImage = async (base64Image) => {
     try {
-      const response = await fetch('http://192.168.0.107:3000/api/uploadImagemPerfil', {
+      const response = await fetch('http://192.168.0.109:3000/api/uploadImagemPerfil', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ export default function MargemSuperioHome() {
 
   const deleteImage = async () => {
     try {
-      const response = await fetch(`http://192.168.0.107:3000/api/deleteImagemPerfil?cpf=${cpf}`, {
+      const response = await fetch(`http://192.168.0.109:3000/api/deleteImagemPerfil?cpf=${cpf}`, {
         method: 'DELETE',
       });
 
